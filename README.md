@@ -1,6 +1,6 @@
 # Campus-Lost-and-Found-Visual-Search-Engine
 
-import streamlit as st
+ streamlit as st
 import sqlite3, os, io, uuid, hashlib
 import numpy as np
 from PIL import Image
