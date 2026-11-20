@@ -115,7 +115,7 @@ def item_form(kind, place_label):
         title = st.text_input("Item name *")
         desc = st.text_area("Details (optional)")
         loc = st.text_input(place_label + " *")
-        contact = st.text_input("Your contact *")
+        contact = st.text_input("Your contact *", max_chars=10)
         submitted = st.form_submit_button("Post & search")
 
     if submitted:
@@ -126,6 +126,8 @@ def item_form(kind, place_label):
         if not contact.strip(): missing.append("contact")
         if missing:
             st.error("Please provide: " + ", ".join(missing))
+        elif not contact.strip().isdigit() or len(contact.strip()) != 10:
+            st.error("Please enter a valid 10-digit contact number.")
         else:
             data = f.getvalue()
             h = hashlib.md5(data + kind.encode()).hexdigest()
